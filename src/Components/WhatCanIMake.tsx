@@ -1,5 +1,6 @@
 import React from "react";
 import { Ingredient } from "../Types/Ingredient";
+import RecipeView from "./RecipeView";
 
 
 
@@ -21,7 +22,7 @@ const WhatCanIMake = () => {
             </div>
 
             <div className="flex flex-row justify-center text-center flex-wrap overflow-auto h-1/1">
-                <RecipeView ingredients={ingredients}></RecipeView>
+                <RecipeView activeIngredients={ingredients}></RecipeView>
             </div>
         </div>
 

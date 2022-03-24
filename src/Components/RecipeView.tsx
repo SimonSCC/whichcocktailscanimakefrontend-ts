@@ -9,7 +9,7 @@ interface Props {
     activeIngredients: Ingredient[];
 }
 
-const RecipeView = ({ activeIngredients }: Props) => {
+const RecipeView: React.FC<Props> = ({ activeIngredients }: Props) => {
 
 
     const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -33,11 +33,12 @@ const RecipeView = ({ activeIngredients }: Props) => {
 
 
     if (recipes.length > 0) {
-        return recipes.map(function (recipe: Recipe) {
-            return (
-                <IndividualRecipe measurementOfIngredients={recipe.measurementOfIngredients} title={recipe.title} videoInfo={recipe.videoInfo} ></IndividualRecipe >
-            );
-        });
+        return <>{recipes.map((recipe: Recipe) =>
+        (
+            <IndividualRecipe measurementOfIngredients={recipe.measurementOfIngredients} title={recipe.title} videoInfo={recipe.videoInfo} ></IndividualRecipe >
+        )
+        )
+        }</>
     } else
         return (
             <div>

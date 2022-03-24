@@ -2,19 +2,55 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import IndividualRecipe from "./IndividualRecipe";
 import { Recipe } from "../Types/Recipe";
+import { useQuery } from "react-query";
+
 
 
 
 const AllRecipes = () => {
 
-    const [allAvailableRecipes, setAllAvailableRecipes] = useState<Recipe[]>([]);
+    // const [allAvailableRecipes, setAllAvailableRecipes] = useState<Recipe[]>([]);
+    let allAvailableRecipes: Recipe[] = [];
 
-    useEffect(() => {
-        axios.get("https://localhost:44316/CocktailOptions/AllRecipies").then((response) => {
-            setAllAvailableRecipes(response.data);
-        });
-    }, [])
+    const fetchRecipes = () => {
+        return axios.get<Recipe[]>("https://localhost:44316/CocktailOptions/AllRecipies");
+    }
 
+    const { isLoading, data, isError, error, isFetching } = useQuery(
+        'all-recipes',
+        fetchRecipes,
+        {
+            staleTime: 15000,
+            refetchOnWindowFocus: false,
+
+        }
+
+
+    )
+
+    console.log({ isLoading, isFetching });
+
+
+    // useEffect(() => {
+    //     axios.get("https://localhost:44316/CocktailOptions/AllRecipies").then((response) => {
+    //         setAllAvailableRecipes(response.data);
+    //     });
+    // }, [])
+
+    if (isError) {
+        console.log({ error });
+
+        return (<div><p>Error fetching data...</p></div>)
+    }
+
+    if (isLoading || isFetching) {
+        return (<div>Loading...</div>)
+    }
+
+    if (data?.data !== undefined) {
+        console.log("Data received, setting Recipes.")
+        allAvailableRecipes = data.data;
+    }
 
     const recipesDisplay: () => JSX.Element = () => {
 

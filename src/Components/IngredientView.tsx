@@ -2,14 +2,14 @@ import React from 'react'
 import { Ingredient } from '../Types/Ingredient';
 
 interface Props {
-    allAvailableIngredients: Ingredient[];
+    allAvailableIngredients?: Ingredient[];
     activeIngredients?: Ingredient[];
     onClickEvent: () => void;
     btnText: string;
 }
 
 
-const IngredientView: React.FC<Props> | any = ({ allAvailableIngredients, activeIngredients, onClickEvent, btnText }: Props) => {
+const IngredientView: React.FC<Props> = ({ allAvailableIngredients, activeIngredients, onClickEvent, btnText }: Props) => {
 
     let filteredIngredients: Ingredient[] | undefined;
     if (activeIngredients && allAvailableIngredients && btnText === "Add" && allAvailableIngredients.length > 0) {
@@ -44,34 +44,35 @@ const IngredientView: React.FC<Props> | any = ({ allAvailableIngredients, active
                     onClickEvent();
                 };
     }
+
     if (filteredIngredients !== undefined && filteredIngredients.length > 0) {
         if (!btnText) {
-            return filteredIngredients.map(function (item) {
-                return (
-                    <div className="flex flex-row items-center p-2 border-2 border-color3 rounded-md m-2 bg-red-50 w-1/4 justify-center flex-wrap ">
-                        <p> {item.name}</p>{" "}
-                    </div>
-                );
-            });
-        }
-        return filteredIngredients.map(function (item) {
-            return (
-                <div
-                    className={` ${btnText === "Delete" ? "bg-green-900 " : "bg-color1"
-                        } flex flex-row items-center p-2 border-2 border-color3 rounded-md m-2  w-1/4`}
-                >
-                    <button
-                        className={`${btnText === "Delete" ? "bg-red-800" : "bg-green-600 "}  text-color5 defaultBtn scale-75 p-3 hover:scale-90`}
-                        onClick={() => onclick(item)}
-                    >
-                        {btnText}
-                    </button>
-                    <p> {item.name}</p>{" "}
+            return <>{filteredIngredients.map((ingr: Ingredient) =>
+            (
+                <div className="flex flex-row items-center p-2 border-2 border-color3 rounded-md m-2 bg-red-50 w-1/4 justify-center flex-wrap ">
+                    <p> {ingr.name}</p>{" "}
                 </div>
-            );
-        });
-    } else {
-        return <div>No Ingredients</div>;
+            ))}</>
+        };
+
+        return <>{filteredIngredients.map((ingr: Ingredient) =>
+        (
+            <div
+                className={` ${btnText === "Delete" ? "bg-green-900 " : "bg-color1"
+                    } flex flex-row items-center p-2 border-2 border-color3 rounded-md m-2  w-1/4`}
+            >
+                <button
+                    className={`${btnText === "Delete" ? "bg-red-800" : "bg-green-600 "}  text-color5 defaultBtn scale-75 p-3 hover:scale-90`}
+                    onClick={() => onclick(ingr)}
+                >
+                    {btnText}
+                </button>
+                <p> {ingr.name}</p>{" "}
+            </div>
+        ))}</>
+    }
+    else {
+        return <></>
     }
 }
 

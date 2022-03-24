@@ -12,7 +12,8 @@ interface Props {
 
 const AllIngredientsDisplay: React.FC<Props> = ({ onClickEvent, activeIngredients }: Props) => {
 
-    const [allAvailableIngredients, setAllAvailableIngredients] = useState([])
+
+    const [allAvailableIngredients, setAllAvailableIngredients] = useState<Ingredient[]>([])
 
     useEffect(() => {
         axios.get("https://localhost:44316/CocktailOptions/AllIngredients").then((response) => {
@@ -26,7 +27,7 @@ const AllIngredientsDisplay: React.FC<Props> = ({ onClickEvent, activeIngredient
         <div className="defaultBox w-full overflow-auto">
             <span className="text-xl">All ingredients</span>
             <div className="flex items-center flex-wrap justify-center text-left">
-                <IngredientView allAvailableIngredients={allAvailableIngredients} onClickEvent={onClickEvent} btnText="Delete"></IngredientView>
+                <IngredientView activeIngredients={activeIngredients} onClickEvent={onClickEvent} btnText="Delete"></IngredientView>
 
                 <IngredientView
                     allAvailableIngredients={allAvailableIngredients}

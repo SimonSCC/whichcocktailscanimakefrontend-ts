@@ -15,13 +15,14 @@ const RecipeView: React.FC<Props> = ({ activeIngredients }: Props) => {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
 
     useEffect(() => {
-
-        console.log(activeIngredients);
-
-        let asJson: string = JSON.stringify(activeIngredients);
-        console.log(asJson);
-        axios.post("https://localhost:44316/CocktailOptions/WhatCanIMake", activeIngredients).then((response) => {
-            console.log(response);
+        console.log("Should send: " + activeIngredients);
+        let nameArr: string[] = [];
+        for (let i = 0; i < activeIngredients.length; i++) {
+            nameArr.push(activeIngredients[i].name);
+        }
+        //Server needs collection of string with the name of the ingredients
+        axios.post("https://localhost:44316/CocktailOptions/WhatCanIMake", nameArr).then((response) => {
+            console.log("Sent request" + response);
 
             setRecipes(response.data);
 

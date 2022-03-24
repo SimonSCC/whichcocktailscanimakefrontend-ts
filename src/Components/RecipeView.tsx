@@ -31,6 +31,7 @@ const RecipeView: React.FC<Props> = ({ activeIngredients }: Props) => {
 
 
 
+    //Below is solution to map, from this site: https://stackoverflow.com/questions/62702485/component-cannot-be-used-as-a-jsx-component-its-return-type-element-is-not
 
     if (recipes.length > 0) {
         return <>{recipes.map((recipe: Recipe) =>

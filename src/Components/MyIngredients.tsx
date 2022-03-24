@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import axios from "axios";
 
 import { Ingredient } from "../Types/Ingredient";
 import AllIngredientsDisplay from "./AllIngredientsDisplay";
 
-const MyIngredients = () => {
-    const [myIngredients, setMyIngredients] = useState<Ingredient[]>([]);
+const MyIngredients: React.FC = () => {
 
     const updateMyIngredients = () => {
-        setMyIngredients(Object.keys(localStorage).map(function (item) {
+        return Object.keys(localStorage).map(function (item) {
             return { name: item };
-        }));
+        });
     }
-    updateMyIngredients();
+
+    const [myIngredients, setMyIngredients] = useState<Ingredient[]>(updateMyIngredients());
 
     return (
         <div className="h-full mb-10">
@@ -23,7 +22,7 @@ const MyIngredients = () => {
                 <AllIngredientsDisplay
                     activeIngredients={myIngredients}
                     onClickEvent={() => {
-                        updateMyIngredients();
+                        setMyIngredients(updateMyIngredients());
                     }}
                 ></AllIngredientsDisplay>
             </div>

@@ -4,7 +4,7 @@ import RecipeView from "./RecipeView";
 
 
 
-const WhatCanIMake = () => {
+const WhatCanIMake: React.FC = () => {
     let ingredients: Ingredient[] = Object.keys(localStorage).map(function (item) {
         return { name: item };
     });

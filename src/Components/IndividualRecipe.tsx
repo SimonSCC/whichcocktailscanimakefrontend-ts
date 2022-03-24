@@ -22,10 +22,10 @@ const IndividualRecipe: React.FC<Recipe> = (recipe: Recipe) => {
             </a>
             <div>
                 <p>
-                    {recipe.measurementOfIngredients.map(function (ingr) {
+                    {recipe.measurementOfIngredients.map(function (ingredient) {
                         return (
                             <div>
-                                <p>{displayIngredientWithMeasurement(ingr)}</p>
+                                <p>{displayIngredientWithMeasurement(ingredient)}</p>
                             </div>
                         );
                     })}

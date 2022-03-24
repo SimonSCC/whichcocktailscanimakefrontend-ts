@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import SideBar from './Components/SideBar';
 import MyIngredients from './Components/MyIngredients';
 import WhatCanIMake from './Components/WhatCanIMake';
+import AllRecipes from './Components/AllRecipes';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
             <Routes>
               <Route path="/myingredients" element={<MyIngredients />} />
               <Route path="/whatcanimake" element={<WhatCanIMake />} />
-              {/* <Route path="/allrecipies" element={<AllRecipies />} /> */}
+              <Route path="/allrecipes" element={<AllRecipes />} />
               <Route path="*" element={<Navigate to="/whatcanimake" replace />} />
             </Routes>
           </div>

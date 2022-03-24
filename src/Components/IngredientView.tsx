@@ -47,15 +47,15 @@ const IngredientView: React.FC<Props> = ({ allAvailableIngredients, activeIngred
 
     if (filteredIngredients !== undefined && filteredIngredients.length > 0) {
         if (!btnText) {
-            return <>{filteredIngredients.map((ingr: Ingredient) =>
+            return <>{filteredIngredients.map((ingredient: Ingredient) =>
             (
                 <div className="flex flex-row items-center p-2 border-2 border-color3 rounded-md m-2 bg-red-50 w-1/4 justify-center flex-wrap ">
-                    <p> {ingr.name}</p>{" "}
+                    <p> {ingredient.name}</p>{" "}
                 </div>
             ))}</>
         };
 
-        return <>{filteredIngredients.map((ingr: Ingredient) =>
+        return <>{filteredIngredients.map((ingredient: Ingredient) =>
         (
             <div
                 className={` ${btnText === "Delete" ? "bg-green-900 " : "bg-color1"
@@ -63,11 +63,11 @@ const IngredientView: React.FC<Props> = ({ allAvailableIngredients, activeIngred
             >
                 <button
                     className={`${btnText === "Delete" ? "bg-red-800" : "bg-green-600 "}  text-color5 defaultBtn scale-75 p-3 hover:scale-90`}
-                    onClick={() => onclick(ingr)}
+                    onClick={() => onclick(ingredient)}
                 >
                     {btnText}
                 </button>
-                <p> {ingr.name}</p>{" "}
+                <p> {ingredient.name}</p>{" "}
             </div>
         ))}</>
     }

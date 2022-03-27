@@ -20,7 +20,7 @@ const AllRecipes = () => {
         'all-recipes',
         fetchRecipes,
         {
-            staleTime: 15000,
+            staleTime: 60000, //60 sec
             refetchOnWindowFocus: false,
 
         }

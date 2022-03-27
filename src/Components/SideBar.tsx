@@ -2,6 +2,7 @@
 import { FaGlassMartiniAlt } from "react-icons/fa";
 import { GiSchoolBag } from "react-icons/gi";
 import { FaBook } from "react-icons/fa";
+import { FcIdea } from "react-icons/fc";
 import SideBarIcon from "./SideBarIcon";
 
 
@@ -11,6 +12,7 @@ const SideBar: React.FC = () => {
             <SideBarIcon icon={<FaGlassMartiniAlt size="44" />} path="whatcanimake" tooltip="What can I make" />
             <SideBarIcon icon={<GiSchoolBag size="52" />} path="myingredients" tooltip="My ingredients" />
             <SideBarIcon icon={<FaBook size="44" />} path="allrecipes" tooltip="All recipes" />
+            <SideBarIcon icon={<FcIdea size="44" />} path="expandrepertoire" tooltip="Expand Repertoire" />
         </div>
     );
 };

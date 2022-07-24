@@ -75,7 +75,6 @@ const AllRecipes = () => {
             <div className="text-center border-b-2 border-color15">
                 <span className="text-4xl">All Recipes</span>
             </div>
-
             <div className="flex flex-row justify-center text-center flex-wrap overflow-auto h-1/1">{
                 recipesDisplay()
             }</div>

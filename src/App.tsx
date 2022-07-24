@@ -8,6 +8,7 @@ import AllRecipes from './Components/AllRecipes';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from "react-query/devtools";
 import ExpandRepertoire from './Components/ExpandRepertoire';
+import MyNotebook from './Components/MyNotebook';
 
 function App() {
   const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/whatcanimake" element={<WhatCanIMake />} />
                 <Route path="/allrecipes" element={<AllRecipes />} />
                 <Route path="/expandrepertoire" element={<ExpandRepertoire />} />
+                <Route path="/mynotebook" element={<MyNotebook />} />
                 <Route path="*" element={<Navigate to="/whatcanimake" replace />} />
               </Routes>
             </div>

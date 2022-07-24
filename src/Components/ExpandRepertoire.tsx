@@ -5,6 +5,7 @@ import { Ingredient } from '../Types/Ingredient';
 
 //Ideas for component:
 // Make Ingredient boxes and make them addable to the player's ingredient list
+//Make the new recipes as links, so one can see which new recipes it is.
 const ExpandRepertoire: React.FC = () => {
 
     let myIngredients: Ingredient[] = Object.keys(localStorage).map(function (item) {

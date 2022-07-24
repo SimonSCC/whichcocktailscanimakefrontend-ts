@@ -9,3 +9,7 @@ https://www.youtube.com/watch?v=2TX8ojaSwF0&list=PLC3y8-rFHvwjTELCrPrcZlo6blLBUs
 docs: https://react-query.tanstack.com/installation
 
 npm i react-query
+
+TODO:
+
+Start using Redux for state management, and include libraries from work.
